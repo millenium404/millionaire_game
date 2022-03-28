@@ -8,16 +8,16 @@
 </style>
 <div class="row justify-content-lg-center">
   <div class="col-lg-8 p-2">
-    <h4>Зеленият компютърен код, с който е представена Матрицата в началото на филма, всъщност представлява сканирани:</h4>
+    <h4>{{ question.question }}</h4>
     <div class="row p-2">
       <div class="col">
         <div class="d-grid gap-2">
-          <button class="btn btn-outline-primary" type="button">A. Глави от Корана</button>
+          <button class="btn btn-outline-primary" type="button">A) {{ answers.0 }}</button>
         </div>
       </div>
       <div class="col">
         <div class="d-grid gap-2">
-          <button class="btn btn-outline-primary" type="button">B. Рецепти за суши</button>
+          <button class="btn btn-outline-primary" type="button">B) {{ answers.1 }}</button>
         </div>
       </div>
     </div>
@@ -25,12 +25,12 @@
       <div class="col">
         <div class="d-grid gap-2">
           <button class="btn btn-outline-primary" type="button">
-          С. Глоби за превишена скорост</button>
+          С) {{ answers.2 }}</button>
         </div>
       </div>
       <div class="col">
         <div class="d-grid gap-2">
-          <button class="btn btn-outline-primary" type="button">D. Упътвания за пералня</button>
+          <button class="btn btn-outline-primary" type="button">D) {{ answers.3 }}</button>
         </div>
       </div>
     </div>
