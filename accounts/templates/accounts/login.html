@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% if not request.user.is_authenticated %}
+<br/><br/>
+<div class="container" align="center">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto" style="margin-bottom:30px;">
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Вход</button>
+      </form>
+      {% if error %}
+      <br/>
+      <p style="color: red">{{ error }}</p>
+      {% endif %}
+    </div>
+    <div class="">
+      <p>Нужно е да си логнат в системата, за да играеш. Ако нямаш профил - <a href="{% url 'register-view' %}">регистрирай се</a>.</p>
+    </div>
+  </div>
+  {% else %}
+  <br/>
+  <h5>Вече сте влезнали в системата. Може да излезете <a href="{% url 'logout-view' %}">от тук</a>.</h5>
+  {% endif %}
+</div>
+<br/>
+{% endblock content %}

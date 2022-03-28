@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br/><br/>
+<div class="container-md">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        <button type="submit" class="btn btn-primary">Запази</button>
+      </form>
+      {% if error %}
+      <br/>
+      <p style="color: red">{{ error }}</p>
+      {% endif %}
+      <br/>
+    </div>
+    <div class="col-md-auto">
+      <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Изиграни игри
+        <span class="badge bg-primary rounded-pill">{{ user.profile.games_played }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+      Общ резултат
+        <span class="badge bg-primary rounded-pill">{{ user.profile.total_score }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+      Среден резултат
+        <span class="badge bg-primary rounded-pill">{{ user.profile.average_score }}</span>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
+{% endblock content %}
