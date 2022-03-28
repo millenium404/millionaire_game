@@ -7,9 +7,8 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(max_length=50, unique=True, blank=True, null=True)
-    games_played = models.FloatField(max_length=50, blank=True, null=True)
-    total_score = models.FloatField(max_length=50, blank=True, null=True)
-    average_score = models.FloatField(max_length=50, blank=True, null=True)
+    games_played = models.IntegerField(blank=True, default=0)
+    total_score = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
         return f'{self.id} - {self.user.username}'
