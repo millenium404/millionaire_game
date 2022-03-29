@@ -49,12 +49,15 @@ def check_answer_view(request, answer):
     question_id = questions[int(session.last_answered_question)]
     question = Question.objects.get(id=question_id)
     if answer == question.correct_answer:
+        user_profile.total_score += session.last_answered_question * 10 + 10
+        user_profile.save()
         if session.last_answered_question <= 14:
             session.last_answered_question += 1
             session.save()
         if session.last_answered_question == 15:
             session.game_finished = True
             user_profile.games_played += 1
+            user_profile.total_score += 1000
             session.save()
             user_profile.save()
             return redirect('end-game')

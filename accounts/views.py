@@ -35,8 +35,9 @@ def login_view(request):
 @login_required
 def profile_update_view(request, id=None):
     obj = get_object_or_404(Profile, user_id=id)
+    average_score = int(obj.total_score / obj.games_played)
     profile_form = ProfileForm(request.POST or None, instance=obj)
-    context = {'object': obj, 'profile_form': profile_form}
+    context = {'object': obj, 'profile_form': profile_form, 'average_score': average_score}
     if profile_form.is_valid():
         try:
             profile_form.save()
