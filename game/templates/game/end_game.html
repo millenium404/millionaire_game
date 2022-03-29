@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{% if last_question == 15 %}
+<br/><h2 class="text-primary">Ти спечели 100 000 лв.!!!</h2><br/>
+{% else %}
+<br/><h2 class="text-primary">Ти загуби Стани Богат... Опитай пак.</h2><br/>
+{% endif %}
+{% endblock content %}

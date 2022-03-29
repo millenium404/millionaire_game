@@ -11,16 +11,23 @@ def generate_questions_list():
         easy_qlist.append(item.id)
     while len(easy_qlist) > 5:
         easy_qlist.remove(random.choice(easy_qlist))
-        random.shuffle(easy_qlist)
+    random.shuffle(easy_qlist)
     for item in normal:
-        easy_qlist.append(item.id)
+        normal_qlist.append(item.id)
     while len(normal_qlist) > 5:
         normal_qlist.remove(random.choice(normal_qlist))
-        random.shuffle(normal_qlist)
+    random.shuffle(normal_qlist)
     for item in hard:
         hard_qlist.append(item.id)
     while len(hard_qlist) > 5:
         hard_qlist.remove(random.choice(hard_qlist))
-        random.shuffle(hard_qlist)
+    random.shuffle(hard_qlist)
     qlist = easy_qlist + normal_qlist + hard_qlist
     return qlist
+
+def string_to_list(string):
+    string = string.lstrip('[')
+    string = string.rstrip(']')
+    string = string.split(', ')
+    questions_id_list = [int(num) for num in string if num.isdigit()]
+    return questions_id_list

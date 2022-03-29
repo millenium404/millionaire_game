@@ -17,7 +17,7 @@ class Question(models.Model):
 
 class GameSession(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    questions_list = models.CharField(max_length=40, blank=True, null=True)
+    questions_list = models.CharField(max_length=100, blank=True, null=True)
     last_answered_question = models.IntegerField(default=0)
     game_finished = models.BooleanField(default=True)
     jokers_used = models.IntegerField(default=0)
