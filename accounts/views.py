@@ -11,15 +11,11 @@ from django.http import Http404
 
 def register_view(request):
     user_form = SignUpForm(request.POST or None)
-    profile_form = ProfileForm(request.POST or None)
-    if all([user_form.is_valid(), profile_form.is_valid()]):
+    if user_form.is_valid():
         user = user_form.save(commit=False)
         user.save()
-        profile = profile_form.save(commit=False)
-        profile.user = user
-        profile.save()
         return redirect('/account/login/')
-    context = {'user_form': user_form, 'profile_form': profile_form}
+    context = {'user_form': user_form}
     return render(request, 'accounts/register.html', context)
 
 
