@@ -5,6 +5,7 @@
 <div class="container-md">
   <div class="row justify-content-md-center">
     <div class="col col-lg-4">
+      <h5 class="text-primary">Здравей, {{ user.username }}</h5>
       <form action="" method="POST">
         {% csrf_token %}
         {{ profile_form.as_p }}
