@@ -15,7 +15,7 @@ SECRET_KEY = get_random_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['games.milenski.eu', '192.168.1.140']
+ALLOWED_HOSTS = ['games.milenski.eu', 'www.games.milenski.eu', '192.168.1.140']
 
 # Application definition
 
