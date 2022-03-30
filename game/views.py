@@ -39,7 +39,7 @@ def start_game_view(request):
             joker_50 = [question.correct_answer, question.answer_3]
             random.shuffle(joker_50)
         if session.joker_3 == 1:
-            if question.difficulty == 'normal':
+            if question.difficulty == 'hard':
                 random_choice = random.choice([question.correct_answer, question.answer_2])
                 joker_friend = f'Мисля, че верният отговор е {random_choice}'
             else:
