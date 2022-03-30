@@ -10,7 +10,7 @@ import random
 def start_game_view(request):
     user = request.user
     question = None
-    joker_public, joker_50 = None, 0
+    joker_public, joker_50, joker_friend = None, None, None
     try:
         session = GameSession.objects.get(user_id=user.id)
         # print(session)
@@ -38,8 +38,13 @@ def start_game_view(request):
         if session.joker_2 == 1:
             joker_50 = [question.correct_answer, question.answer_3]
             random.shuffle(joker_50)
-            # session.joker_2 = 2
-            # session.save()
+        if session.joker_3 == 1:
+            if question.difficulty == 'normal':
+                random_choice = random.choice([question.correct_answer, question.answer_2])
+                joker_friend = f'Мисля, че верният отговор е {random_choice}'
+            else:
+                joker_friend = f'Сигурен съм, че верният отговор е {question.correct_answer}'
+
         # print(answers)
     context = {
         'session': session,
@@ -47,6 +52,7 @@ def start_game_view(request):
         'answers': answers,
         'joker_public': joker_public,
         'joker_50': joker_50,
+        'joker_friend': joker_friend,
         'last_question': session.last_answered_question
         }
     return render(request, 'game/start_game.html', context)
@@ -65,6 +71,9 @@ def check_answer_view(request, answer):
         user_profile.save()
         if session.joker_2 == 1:
             session.joker_2 = 2
+            session.save()
+        if session.joker_3 == 1:
+            session.joker_3 = 2
             session.save()
         if session.last_answered_question <= 14:
             session.last_answered_question += 1
@@ -98,6 +107,10 @@ def jocker_view(request, id=None):
     if id == 2:
         if session.joker_2 == 0:
             session.joker_2 = 1
+            session.save()
+    if id == 3:
+        if session.joker_3 == 0:
+            session.joker_3 = 1
             session.save()
     return redirect('start-game')
 

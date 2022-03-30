@@ -68,6 +68,9 @@
       {% if joker_public %}
         <br/><span class="text-primary"><b>{% for n in joker_public %} {{ n }},  {% endfor %}</b></span>
       {% endif %}
+      {% if session.joker_3 == 1 %}
+        <br/><span class="text-primary"><b>{{ joker_friend }}</b></span>
+      {% endif %}
     </div>
     <div class="row p-2">
       <div class="col">
@@ -90,7 +93,11 @@
       </div>
       <div class="col">
         <div class="d-grid gap-2">
+          {% if session.joker_3 > 0 %}
+          <a href="#"><img class="rounded-circle img-fluid" src="{% static 'img/friend-2.jpg' %}"></a>
+          {% else %}
           <a href="{% url 'use-jocker' id=3 %}"><img class="rounded-circle img-fluid" src="{% static 'img/friend.jpg' %}"></a>
+          {% endif %}
         </div>
       </div>
     </div>
