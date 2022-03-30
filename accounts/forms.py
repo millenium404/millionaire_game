@@ -21,12 +21,3 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['email']
-
-        # labels = {
-        #     'first_name': 'Име',
-        #     'last_name': 'Фамилия',
-        #     'email': 'Имейл адрес',
-        #     'city': 'Населено място',
-        #     'phone': 'Телефонен номер',
-        #     'is_doctor': 'Аз съм лекар',
-        # }
