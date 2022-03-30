@@ -1,6 +1,10 @@
-string = '[6, 8, 4, 3, 7, 2, 9, 10, 11, 12, 13, 14, 15, 20, 16, 22, 17, 21]'
-string = string.lstrip('[')
-string = string.rstrip(']')
-string = string.split(', ')
-questions = [int(num) for num in string if num.isdigit()]
-print(questions)
+import random
+
+def joker_1():
+    correct_percent = random.randint(54, 82)
+    answer_2_percent = round((100 - correct_percent) / 3)
+    answer_3_percent = round((100 - correct_percent - answer_2_percent) / 1.4)
+    answer_4_percent = 100 - answer_3_percent - answer_2_percent - correct_percent
+    return correct_percent, answer_2_percent, answer_3_percent, answer_4_percent
+
+print(joker_1())

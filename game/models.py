@@ -20,7 +20,9 @@ class GameSession(models.Model):
     questions_list = models.CharField(max_length=100, blank=True, null=True)
     last_answered_question = models.IntegerField(default=0)
     game_finished = models.BooleanField(default=True)
-    jokers_used = models.IntegerField(default=0)
+    joker_1 = models.IntegerField(default=0)
+    joker_2 = models.IntegerField(default=0)
+    joker_3 = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.id} - {self.user.username}'

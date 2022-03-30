@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load static %}
 <style>
     .row-height {
     height: 20px;
@@ -9,27 +10,87 @@
 <div class="row justify-content-lg-center">
   <div class="col-lg-8 p-2">
     <h4>{{ question.question }}</h4>
+    {% if session.joker_2 == 1 %}
     <div class="row p-2">
       <div class="col">
         <div class="d-grid gap-2">
-          <a class="btn btn-outline-primary" type="button" href="{% url 'check-answer' answer=answers.0 %}">A) {{ answers.0 }}</a>
+          <a class="btn btn-outline-success" type="button" href="{% url 'check-answer' answer=joker_50.0 %}">A) {{ joker_50.0 }}</a>
         </div>
       </div>
       <div class="col">
         <div class="d-grid gap-2">
-          <a class="btn btn-outline-primary" type="button" href="{% url 'check-answer' answer=answers.1 %}">B) {{ answers.1 }}</a>
+          <a class="btn btn-outline-secondary" type="button" href="#" disabled> - </a>
         </div>
       </div>
     </div>
     <div class="row p-2">
       <div class="col">
         <div class="d-grid gap-2">
-          <a class="btn btn-outline-primary" type="button" href="{% url 'check-answer' answer=answers.2 %}">C) {{ answers.2 }}</a>
+          <a class="btn btn-outline-secondary" type="button" href="#" disabled> - </a>
         </div>
       </div>
       <div class="col">
         <div class="d-grid gap-2">
-          <a class="btn btn-outline-primary" type="button" href="{% url 'check-answer' answer=answers.3 %}">D) {{ answers.3 }}</a>
+          <a class="btn btn-outline-success" type="button" href="{% url 'check-answer' answer=joker_50.1 %}">D) {{ joker_50.1 }}</a>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="row p-2">
+      <div class="col">
+        <div class="d-grid gap-2">
+          <a class="btn btn-outline-success" type="button" href="{% url 'check-answer' answer=answers.0 %}">A) {{ answers.0 }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid gap-2">
+          <a class="btn btn-outline-success" type="button" href="{% url 'check-answer' answer=answers.1 %}">B) {{ answers.1 }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row p-2">
+      <div class="col">
+        <div class="d-grid gap-2">
+          <a class="btn btn-outline-success" type="button" href="{% url 'check-answer' answer=answers.2 %}">C) {{ answers.2 }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid gap-2">
+          <a class="btn btn-outline-success" type="button" href="{% url 'check-answer' answer=answers.3 %}">D) {{ answers.3 }}</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="row p-2">
+      <div class="col">
+        <br/><h5>Използвай жокер:</h5>
+      </div>
+      {% if joker_public %}
+        <br/><span class="text-primary"><b>{% for n in joker_public %} {{ n }},  {% endfor %}</b></span>
+      {% endif %}
+    </div>
+    <div class="row p-2">
+      <div class="col">
+        <div class="d-grid gap-2">
+          {% if session.joker_1 > 0 %}
+          <a href="#"><img class="rounded-circle img-fluid" src="{% static 'img/public-2.jpg' %}"></a>
+          {% else %}
+          <a href="{% url 'use-jocker' id=1 %}"><img class="rounded-circle img-fluid" src="{% static 'img/public.jpg' %}"></a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid gap-2">
+          {% if session.joker_2 > 0 %}
+          <a href="#"><img class="rounded-circle img-fluid" src="{% static 'img/50-50-2.jpg' %}"></a>
+          {% else %}
+          <a href="{% url 'use-jocker' id=2 %}"><img class="rounded-circle img-fluid" src="{% static 'img/50-50.jpg' %}"></a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid gap-2">
+          <a href="{% url 'use-jocker' id=3 %}"><img class="rounded-circle img-fluid" src="{% static 'img/friend.jpg' %}"></a>
         </div>
       </div>
     </div>
