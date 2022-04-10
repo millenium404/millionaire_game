@@ -1,5 +1,5 @@
 import random
-from. models import Question
+from .models import Question
 
 
 def generate_questions_list():
